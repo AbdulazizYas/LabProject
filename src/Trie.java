@@ -26,6 +26,7 @@ public class Trie {
   }
 
   public boolean isPrefix(String prefix) {
+
     TrieNode p = root;
 
     int wordLen = prefix.length();
@@ -57,8 +58,8 @@ public class Trie {
         p = p.getChilds()[p.IndexOf(ch)];
       }
     }
-
-    p.setIsWord(true);
+    if (!p.isWord())
+      p.setIsWord(true);
   }
 
   // helper method
@@ -96,6 +97,8 @@ public class Trie {
   public void delete(String word) {
     if (contains(word))
       delete(root, word, 0);
+    else
+      System.out.println(word + " does not exist in the Trie");
   }
 
   public boolean isEmpty() {
